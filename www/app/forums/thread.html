@@ -1,0 +1,93 @@
+<ion-view title="Refont du B2B" ng-controller="ThreadCtrl">
+	<ion-content>
+
+    	<div class="list card">
+          
+          <div class="item item-avatar">
+            <img src="http://ionicframework.com/img/docs/mcfly.jpg">
+            <h2>NGUYEN Nhat Minh</h2>
+            <p>Villageois</p>
+            <p>13/12/2014 12:12:12</p>
+          </div>
+
+          <div class="item item-body">
+            <img class="full-image" src="http://ionicframework.com/img/docs/delorean.jpg">
+            <p>
+              This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+              the content is from a card-body consisting of an image and paragraph text. The footer
+              consists of tabs, icons aligned left, within the card-footer.
+            </p>
+            <p>
+              <a href="#" class="subdued">1 Like</a>
+              <a href="#" class="subdued">5 Dislike</a>
+              <a href="#" class="subdued">6 Favori</a>
+              <a href="#" class="subdued">Note:2/5</a>
+            </p>
+          </div>
+
+          <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" ng-click="like()">
+              <i class="icon ion-thumbsup"></i>
+              Like
+            </a>
+            <a class="tab-item" ng-click="dislike()">
+              <i class="icon ion-chatbox"></i>
+              Dislike
+            </a>
+            
+            <a class="tab-item" ng-click="showShareForm()">
+              <i class="icon ion-share"></i>
+              Share
+            </a>
+          </div>
+
+          <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" ng-click="comment()">
+              <i class="icon ion-thumbsup"></i>
+              Comment
+            </a>
+            <a class="tab-item"  ng-click="bookmark()">
+              <i class="icon ion-thumbsup"></i>
+              Bookmark
+            </a>
+            <a class="tab-item" ng-click="showNoteForm()">
+              <i class="icon ion-chatbox"></i>
+              Note
+            </a>
+            
+            
+          </div>
+
+        </div>
+        
+    	<div class="list card">
+
+          <div class="item item-avatar">
+            <img src="http://ionicframework.com/img/docs/mcfly.jpg">
+            <h2>NGUYEN Nhat Minh</h2>
+            <p>November 05, 1955</p>
+          </div>
+
+          <div class="item item-body">
+            <img class="full-image" src="http://ionicframework.com/img/docs/delorean.jpg">
+            <p>
+              This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+              the content is from a card-body consisting of an image and paragraph text. The footer
+              consists of tabs, icons aligned left, within the card-footer.
+            </p>
+            
+          </div>
+
+          <div class="item tabs tabs-secondary tabs-icon-left">
+            
+            <a class="tab-item" ng-click="comment()">
+              <i class="icon ion-chatbox"></i>
+              Comment
+            </a>
+            
+          </div>
+
+        </div>
+
+    </ion-content>
+</ion-view>

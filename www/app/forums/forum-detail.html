@@ -1,0 +1,61 @@
+<ion-view ng-controller="ForumDetailCtrl as vm">
+  <ion-content>
+
+    <div class="item item-input-inset">
+        <label style="margin-right: 5px;">
+            <select ng-model="mediaTypes.type">
+                <option value="all" selected>All Media</option>
+                <option value="musicVideo">Video</option>
+                <option value="movie">Movie</option>
+                <option value="music">Music</option>
+                <option value="podcast">Podcast</option>
+                <option value="tvShow">TV Show</option>
+            </select>
+        </label>
+
+        <label class="item-input-wrapper">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="text" placeholder="Search"/>
+        </label>
+
+        <button class="button button-positive"  style="margin-left: 5px;" ng-click="search()">
+        Go!
+        </button>
+    </div>
+
+    <div class="button-bar">
+      <a class="button button-positive">Nouveau Topic</a>
+      <a class="button button-balanced">Présentation</a>
+      <a class="button button-calm">Communication</a>
+    </div>
+<br>
+    <div class="list">
+        <a class="item item-icon-right"  ui-sref="app.thread" ng-repeat="thread in vm.threads">
+            <div class="row">
+                <div class="col-20">
+                    <p>12/11/2014</p>
+                    <p>fds</p>
+                </div>
+
+                <div class="col col-center">
+                    <h3>{{vm.thread.threadName}}</h3>
+                    <p>N{{thread.threadType}}</p>
+                </div>
+                
+                <div class="col-20 col-center">
+                    <h4 class="positive">4/5</h4>
+                    <h4 class="positive">10 Likes</h4>
+                    <h4 class="positive">5  Comments</h4>
+                </div>
+
+                
+                
+            </div>
+            
+            <i class="icon ion-chevron-right icon-accessory"></i>
+        </a>
+    </div>
+
+
+  </ion-content>
+</ion-view>
