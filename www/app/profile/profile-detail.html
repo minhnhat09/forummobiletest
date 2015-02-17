@@ -1,25 +1,31 @@
-<ion-view title="Profile">
+<ion-view title="Profile" ng-controller="ProfileCtrl as vm">
   <ion-content class="has-header">
+  
+
+    
+
+    <a ui-sref="home.pageperso" class="button icon-left ion-chevron-left button-clear button-dark">Retour</a>
+
 
     <div class="list">
         
         <a class="item">
     		Pseudo
-    	<span class="badge">minh</span>
+    	<span class="badge">{{vm.user.userName}}</span>
   		</a>
  		<a class="item">
     		Email
-    	<span class="badge">nhat-minh.nguyen@renault.com</span>
+    	<span class="badge">{{vm.user.email}}</span>
   		</a>
  
         <a class="item">
     		Date inscription
-    	<span class="badge">12/12/2012</span>
+    	<span class="badge">{{vm.user.dateInscription}}</span>
   		</a>
  
         <a class="item">
     		Civilité
-    	<span class="badge">Monsieur</span>
+    	<span class="badge"></span>
   		</a>
  
         <a class="item">

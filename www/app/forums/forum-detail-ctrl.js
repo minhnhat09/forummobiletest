@@ -2,18 +2,20 @@
     'use strict';
 
     angular.module('eliteApp')
-        .controller('ForumDetailCtrl', ['$state', 'eliteApi', ForumDetailCtrl]);
+        .controller('ForumDetailCtrl', ['$state', 'forumApi', ForumDetailCtrl]);
 
-    function ForumDetailCtrl($state, eliteApi) {
+    function ForumDetailCtrl($state, forumApi) {
         var vm = this;
 
-        eliteApi.getThreads().then(function (data) {
+        forumApi.getForumById().then(function (data) {
             vm.threads = data;
             console.log(data);
-            console.log(vm.thread.threadName);
-
         });
 
+        vm.selectThread = function(id){
+            forumApi.setThreadId(id);
+            $state.go("app.thread");
+        }
 
     }
 })();

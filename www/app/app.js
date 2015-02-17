@@ -24,6 +24,14 @@ angular.module("eliteApp", ["ionic"])
       templateUrl: "app/home/home.html"
     })
 
+    .state('login', {
+      url: "/login",
+      templateUrl: "app/login/login.html"  
+        
+      }
+    )
+
+
     .state('home.leagues', {
       url: "/leagues",
       views: {
@@ -209,6 +217,8 @@ angular.module("eliteApp", ["ionic"])
       }
     })
 
+    
+
     .state('app.rules', {
       url: "/rules",
       views: {
@@ -219,5 +229,5 @@ angular.module("eliteApp", ["ionic"])
     });
 
     // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/home/leagues');
+  $urlRouterProvider.otherwise('/login');
 });

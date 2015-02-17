@@ -1,28 +1,23 @@
-<ion-view title="Refont du B2B" ng-controller="ThreadCtrl">
+<ion-view ng-controller="ThreadCtrl as vm" title="{{vm.thread.threadName}}" >
 	<ion-content>
 
     	<div class="list card">
           
           <div class="item item-avatar">
             <img src="http://ionicframework.com/img/docs/mcfly.jpg">
-            <h2>NGUYEN Nhat Minh</h2>
-            <p>Villageois</p>
-            <p>13/12/2014 12:12:12</p>
+            <h2>{{vm.thread.author.firstName}} {{vm.thread.author.lastName}}</h2>
+            <p>{{vm.thread.author.title}}</p>
+            <p>{{vm.thread.publicDate | date:"dd/MM/yyyy HH:mm:ss"}}</p>
           </div>
 
-          <div class="item item-body">
-            <img class="full-image" src="http://ionicframework.com/img/docs/delorean.jpg">
-            <p>
-              This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-              the content is from a card-body consisting of an image and paragraph text. The footer
-              consists of tabs, icons aligned left, within the card-footer.
-            </p>
-            <p>
-              <a href="#" class="subdued">1 Like</a>
+          <div class="item item-body" ng-bind-html="vm.thread.content">
+            
+            <!-- <p>
+              <a href="#" class="subdued">{{}} Like</a>
               <a href="#" class="subdued">5 Dislike</a>
               <a href="#" class="subdued">6 Favori</a>
               <a href="#" class="subdued">Note:2/5</a>
-            </p>
+            </p> -->
           </div>
 
           <div class="item tabs tabs-secondary tabs-icon-left">
@@ -54,40 +49,24 @@
               <i class="icon ion-chatbox"></i>
               Note
             </a>
-            
-            
           </div>
-
-        </div>
+</div>
         
-    	<div class="list card">
-
+    	<div class="list card" ng-repeat="post in vm.thread.posts">
           <div class="item item-avatar">
             <img src="http://ionicframework.com/img/docs/mcfly.jpg">
-            <h2>NGUYEN Nhat Minh</h2>
-            <p>November 05, 1955</p>
+            <h2>{{post.user.firstName}} {{post.user.lastName}}</h2>
+            <p>{{post.postTime | date:"dd/MM/yyyy"}}</p>
           </div>
 
-          <div class="item item-body">
-            <img class="full-image" src="http://ionicframework.com/img/docs/delorean.jpg">
-            <p>
-              This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-              the content is from a card-body consisting of an image and paragraph text. The footer
-              consists of tabs, icons aligned left, within the card-footer.
-            </p>
-            
+          <div class="item item-body" ng-bind-html="post.postContent">
           </div>
-
           <div class="item tabs tabs-secondary tabs-icon-left">
-            
             <a class="tab-item" ng-click="comment()">
               <i class="icon ion-chatbox"></i>
               Comment
             </a>
-            
           </div>
-
         </div>
-
     </ion-content>
 </ion-view>

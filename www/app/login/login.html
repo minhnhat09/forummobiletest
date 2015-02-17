@@ -1,0 +1,23 @@
+<ion-nav-bar class="bar-positive">
+    <h1 class="title">Connexion</h1>
+</ion-nav-bar>
+
+<ion-view ng-controller="LoginCtrl as vm">
+    <ion-content class="has-header">
+        <div class="list">
+
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Nom d'utilisateur</span>
+                <input type="text" placeholder="Nom d'utilisateur" ng-model="user.username">
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Mot de passe</span>
+                <input type="password" placeholder="Mot de passe" ng-model="user.password">
+            </label>
+        </div>
+        <pre>form = {{user | json}}</pre>
+        <button class="button button-block button-positive" ng-click="vm.login(user)">
+            Valider
+        </button>
+    </ion-content>
+</ion-view>

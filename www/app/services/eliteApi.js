@@ -34,11 +34,7 @@
 
         function getLeagueData(){
             var deferred = $q.defer();
-
             $ionicLoading.show({template: "Loading..."});
-
-
-
             $http.get("http://elite-schedule.net/api/leaguedata/" + currentLeagueId)
                 .success(function (data, status) {
                     console.log("Received schedule data via http ", data, status);
@@ -46,7 +42,6 @@
                         $ionicLoading.hide();
                         deferred.resolve(data);
                     }, 3000);
-
                 })
                 .error(function () {
                     console.log("Error while making http call");
@@ -64,12 +59,7 @@
             getLeagues: getLeagues,
             getLeagueData: getLeagueData,
             getThreads:getThreads,
-
-
-
             setLeagueId:setLeagueId
-
-
         };
     }
 })();

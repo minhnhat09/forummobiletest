@@ -2,24 +2,17 @@
     'use strict';
 
     angular.module('eliteApp')
-    .controller('ThreadCtrl', ['$state','$scope','$http', '$ionicActionSheet', 'eliteApi', ThreadCtrl]);
+    .controller('ThreadCtrl', ['$state','$scope', '$ionicActionSheet', 'forumApi', ThreadCtrl]);
 
-    function ThreadCtrl($state, $scope,$http, $ionicActionSheet,  eliteApi) {
+    function ThreadCtrl($state, $scope, $ionicActionSheet,  forumApi) {
         var vm = this;
+        var data = forumApi.getThreadById().then(function(data){
+          vm.thread = data;
+          console.log(data);
+        });
         
-        var data = eliteApi.getLeagues();
-
-
-
-
-        var dataThread = eliteApi.getThread();
-
-        console.log(dataThread);
-        vm.leagues = data;
-
-        vm.selectLeague = function(id){
-            $state.go("app.teams");
-        }
+        
+       
 
         $scope.bookmark = function(){
           console.log('bookmark');
