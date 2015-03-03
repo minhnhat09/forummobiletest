@@ -5,9 +5,8 @@
 
 	function ForumsCtrl($scope, $state, forumApi){
 		var vm = this;
-		$scope.username = forumApi.currentUser;
-		console.log("forum user" +  $scope.username);
 		console.log(forumApi);
+		console.log("Page forum, current user is " + forumApi.getCurrentUser());
 		forumApi.getServices().then(function (data){
 			vm.services = data;
 			console.log(data);

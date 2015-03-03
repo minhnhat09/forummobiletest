@@ -86,7 +86,7 @@
 
 			$http({
                 method: 'POST',
-                url: 'http://localhost:9000/forum/api/authenticate ',
+                url: 'http://localhost:9000/forum/api/authenticate',
                 data: user,
                 headers: {'Content-Type': 'application/json'}
             }).success(function (data, status, headers, config) {
@@ -111,11 +111,11 @@
 			currentThreadId = ThreadId;
 		}
 
-		function setCurrentUser(user){
+		var setCurrentUser = function(user){
 			currentUser = user;
-		}
+		};
 
-		function getCurrentUser(){
+		var getCurrentUser = function(){
 			return currentUser;
 		}
 
@@ -124,12 +124,13 @@
 			login: login,
 			getServices: getServices,
 			getForumById: getForumById,
-			setForumId: setForumId,
 			getThreadById: getThreadById,
+			getUserById: getUserById,
+			
+			setForumId: setForumId,
 			setThreadId: setThreadId,
-			setCurrentUser: setCurrentUser,
-			currentUser:currentUser,
-			getUserById: getUserById
+			setCurrentUser:setCurrentUser,
+			getCurrentUser:getCurrentUser
 			
 		};
 	}
