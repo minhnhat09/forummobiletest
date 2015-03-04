@@ -1,0 +1,19 @@
+<ion-nav-bar class="bar-positive">
+    <h1 class="title">Commenter</h1>
+</ion-nav-bar>
+
+<ion-view ng-controller="CommentCtrl as vm">
+    <ion-content class="has-header">
+        
+            <textarea placeholder="Saisissez votre commentaire" ng-model="comment.content">
+            </textarea>
+        
+        <pre>form = {{comment | json}}</pre>
+        <button class="button button-block button-positive" ng-click="vm.commentThread(comment)">
+            Valider
+        </button>
+        <a ui-sref="app.thread" class="button button-block button-assertive">
+            Annuler
+        </a>
+    </ion-content>
+</ion-view>

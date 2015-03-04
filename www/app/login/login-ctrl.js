@@ -6,13 +6,18 @@
 
     function LoginCtrl($http, $location, $ionicPopup, $rootScope, $state, forumApi, $scope) {
         var vm = this;
-        
-        
         console.log("login controller");
         console.log(forumApi);
         /*vm.login = forumApi.login($scope.user).then(function(data){
             console.log(data);
         });*/
+        /*vm.login = function(user){
+            console.log(user);
+            forumApi.setThreadId(user);
+            forumApi.login().then(function(data){
+                console.log(data);
+            });
+        }*/
         vm.login = function (user) {
 
             $http({
@@ -24,8 +29,8 @@
                 console.log(data);
                 var user = data;
                 //console.log(forumApi);
-                forumApi.setCurrentUser(user);
-                
+                //forumApi.setCurrentUser(user);
+                //forumApi.setThreadId(user);
                 //forumApi.setCurrentUser(data);
                 //console.log("forum " + forumApi.getCurrentUser());
                 //forumApi.setCurrentUser(data);

@@ -1,19 +1,12 @@
 <ion-view title="Profile" ng-controller="ProfileCtrl as vm">
   <ion-content class="has-header">
-  
-
-    
-
     <a ui-sref="home.pageperso" class="button icon-left ion-chevron-left button-clear button-dark">Retour</a>
-
-
     <div class="list">
-        
         <a class="item">
     		Pseudo
     	<span class="badge">{{vm.user.userName}}</span>
   		</a>
- 		<a class="item">
+ 		 <a class="item">
     		Email
     	<span class="badge">{{vm.user.email}}</span>
   		</a>
@@ -25,47 +18,47 @@
  
         <a class="item">
     		Civilité
-    	<span class="badge"></span>
+    	<span class="badge">{{vm.user.civilite}}</span>
   		</a>
  
         <a class="item">
     		Nom
-    	<span class="badge">NGUYEN</span>
+    	<span class="badge">{{vm.user.firstName}}</span>
   		</a>
  
         <a class="item">
     		Prénom
-    	<span class="badge">Nhat-Minh</span>
+    	<span class="badge">{{vm.user.lastName}}</span>
   		</a>
  
         <a class="item">
     		Adresse
-    	<span class="badge">3 rue de l'Yerres</span>
+    	<span class="badge">{{vm.user.address}}</span>
   		</a>
  
         <a class="item">
     		Code Postal
-    	<span class="badge">94190</span>
+    	<span class="badge">{{vm.user.postalCode}}</span>
   		</a>
  
         <a class="item">
     		Commune
-    	<span class="badge">Villeneuve Saint Georges</span>
+    	<span class="badge">{{vm.user.city}}</span>
   		</a>
  
         <a class="item">
     		Pays
-    	<span class="badge">France</span>
+    	<span class="badge">{{vm.user.country}}</span>
   		</a>
  
         <a class="item">
     		Téléphone
-    	<span class="badge">06 49 45 49 92</span>
+    	<span class="badge">{{vm.user.mobilePhone}}</span>
   		</a>
  
         <a class="item">
     		Service Inscrit
-    	<span class="badge">Vente Entreprise</span>
+    	<span class="badge">{{vm.user.service.serviceName}}</span>
   		</a>
  
     </div>

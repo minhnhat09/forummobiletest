@@ -7,8 +7,6 @@
 		var currentThreadId;
 		var currentUser;
 
-
-
 		function getServices(){
 			var deferred = $q.defer();
 			$ionicLoading.show({template: "Loading..."});
@@ -49,7 +47,7 @@
 		function getThreadById(){
 			var deferred = $q.defer();
 			$ionicLoading.show({template: "Loading..."});
-			$http.get("http://localhost:9000/forum/api/findThread")
+			$http.get("http://localhost:9000/forum/api/forum/thread/"+ currentThreadId)
 			.success(function(data, status){
 				console.log("Received list posts ok", data, status);
 				$ionicLoading.hide();
@@ -63,10 +61,10 @@
 			return deferred.promise;
 		}
 
-		function getUserById(){
+		function getUserInfo(){
 			var deferred = $q.defer();
 			$ionicLoading.show({template: "Loading..."});
-			$http.get("http://localhost:9000/forum/api/user/" + currentUser)
+			$http.get("http://localhost:9000/forum/api/currentUser")
 			.success(function(data, status){
 				console.log("Received user ok", data, status);
 				$ionicLoading.hide();
@@ -80,14 +78,41 @@
 			return deferred.promise;
 		}
 
-		function login(user){
+		function login(){
 			var deferred = $q.defer();
 			$ionicLoading.show({template: "Loading..."});
-
 			$http({
                 method: 'POST',
                 url: 'http://localhost:9000/forum/api/authenticate',
-                data: user,
+                data: currentUser,
+                headers: {'Content-Type': 'application/json'}
+            }).success(function (data, status, headers, config) {
+
+                console.log(data);
+                $ionicLoading.hide();
+				deferred.resolve(data);
+            }).error(function (data, status, headers, config) {
+                    console.log("error");
+                    $ionicPopup.alert({
+					     title: 'Erreur',
+					     template: 'Nom d\'utilisateur ou mot de passe est incorrect'
+					   });
+                    $ionicLoading.hide();
+					deferred.reject();
+                });
+            return deferred.promise;
+		}
+
+		function commentThread(comment){
+
+			comment.currentThreadId = currentThreadId;
+			console.log(comment);
+			var deferred = $q.defer();
+			$ionicLoading.show({template: "Loading..."});
+			$http({
+                method: 'POST',
+                url: 'http://localhost:9000/forum/api/thread/commentThread',
+                data: comment,
                 headers: {'Content-Type': 'application/json'}
             }).success(function (data, status, headers, config) {
 
@@ -111,11 +136,15 @@
 			currentThreadId = ThreadId;
 		}
 
-		var setCurrentUser = function(user){
+		function getThreadId(){
+			return currentThreadId;
+		}
+
+		function setCurrentUser(user){
 			currentUser = user;
 		};
 
-		var getCurrentUser = function(){
+		function getCurrentUser(){
 			return currentUser;
 		}
 
@@ -125,13 +154,13 @@
 			getServices: getServices,
 			getForumById: getForumById,
 			getThreadById: getThreadById,
-			getUserById: getUserById,
-			
+			getUserInfo: getUserInfo,
+			getThreadId: getThreadId,
 			setForumId: setForumId,
 			setThreadId: setThreadId,
 			setCurrentUser:setCurrentUser,
-			getCurrentUser:getCurrentUser
-			
+			getCurrentUser:getCurrentUser,
+			currentThreadId:currentThreadId
 		};
 	}
 

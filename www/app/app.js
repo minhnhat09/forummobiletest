@@ -114,6 +114,14 @@ angular.module("eliteApp", ["ionic"])
         }
       }
     })
+    .state('app.message-detail', {
+      url: "/message/message-detail",
+      views: {
+        'mainContent': {
+          templateUrl: "app/profile/message-detail.html"
+        }
+      }
+    })
 
 
     
@@ -186,8 +194,15 @@ angular.module("eliteApp", ["ionic"])
         }
       }
     })
-
-
+    //comment thread page
+    .state('app.comment', {
+      url: "/forums/thread/comment",
+      views: {
+        'mainContent': {
+          templateUrl: "app/forums/comment.html"
+        }
+      }
+    })
 
 
     .state('app.game', {

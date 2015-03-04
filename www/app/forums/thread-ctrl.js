@@ -4,13 +4,15 @@
     angular.module('eliteApp')
     .controller('ThreadCtrl', ['$state','$scope', '$ionicActionSheet', 'forumApi', ThreadCtrl]);
 
-    function ThreadCtrl($state, $scope, $ionicActionSheet,  forumApi) {
+    function ThreadCtrl($state, $scope, $ionicActionSheet, forumApi) {
         var vm = this;
+
         var data = forumApi.getThreadById().then(function(data){
           vm.thread = data;
           console.log(data);
         });
-        
+
+        console.log("fsdq:" + data.idThread);
         
        
 
@@ -18,12 +20,25 @@
           console.log('bookmark');
         };
 
-        $scope.comment = function(){
-          console.log('comment');
+        vm.commentThread = function(id){
+            forumApi.setThreadId(id);
+            $state.go("app.comment");
+            
+
         };
 
-        $scope.like = function(){
-          console.log('like');
+        
+        
+        $scope.createContact = function(u) {        
+          $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
+          $scope.modal.hide();
+        };
+
+
+        $scope.like = function(idThread){
+          
+
+
         };
 
         $scope.dislike = function(){

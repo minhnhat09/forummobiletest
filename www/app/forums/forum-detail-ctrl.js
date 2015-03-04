@@ -13,6 +13,7 @@
         });
 
         vm.selectThread = function(id){
+            console.log('id: ' + id);
             forumApi.setThreadId(id);
             $state.go("app.thread");
         }

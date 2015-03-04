@@ -5,8 +5,7 @@
 
 	function ProfileCtrl(forumApi){
 		var vm  = this;
-		console.log("currentUser " + forumApi.currentUser);
-		forumApi.getUserById().then(function(data){
+		forumApi.getUserInfo().then(function(data){
 			vm.user = data;
 			console.log("data user " + data);
 		});
