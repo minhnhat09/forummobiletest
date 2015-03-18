@@ -1,26 +1,15 @@
-<ion-view title="Bookmark">
+<ion-view title="Bookmark" ng-controller="BookmarkCtrl as vm">
   <ion-content class="has-header">
-
-    <div class="list">
+  <a ui-sref="home.pageperso" class="button icon-left ion-chevron-left button-clear button-dark">Retour</a>
+    <div class="list" >
         
-        <a class="item item-icon-right" href="#">
+        <a class="item item-icon-right" ng-repeat="bookmark in vm.bookmarks" ui-sref="app.thread" ng-click="vm.selectThread(bookmark.thread.idThread)">
           
-          <h2>Refonte du B2B</h2>
-          <p>Vente Entreprise</p>
+          <h2>{{bookmark.thread.threadName}}</h2>
+          <p>{{bookmark.thread.application.appName}}</p>
           <i class="icon ion-chevron-right icon-accessory"></i>
         </a>
-        <a class="item item-icon-right" href="#">
-          
-          <h2>Refonte du B2B</h2>
-          <p>Vente Entreprise</p>
-          <i class="icon ion-chevron-right icon-accessory"></i>
-        </a>
-        <a class="item item-icon-right" href="#">
-          
-          <h2>Refonte du B2B</h2>
-          <p>Vente Entreprise</p>
-          <i class="icon ion-chevron-right icon-accessory"></i>
-        </a>
+        
         
         
         

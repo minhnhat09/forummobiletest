@@ -1,0 +1,42 @@
+<ion-nav-bar class="bar-positive">
+    <h1 class="title">Demande code Parrainage</h1>
+</ion-nav-bar>
+
+<ion-view ng-controller="LoginCtrl as vm">
+    <ion-content class="has-header">
+        <div class="list">
+
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Nom et prénom</span>
+                <input type="text" placeholder="Nom et prénom" ng-model="user.username">
+            </label>
+
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">IPN</span>
+                <input type="text" placeholder="IPN" ng-model="user.ipn">
+            </label>
+
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Service incrit</span>
+                <input type="text" placeholder="Service inscrit" ng-model="user.service">
+            </label>
+
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Email</span>
+                <input type="text" placeholder="Email" ng-model="user.email">
+            </label>
+
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">Motif</span>
+                <input type="text" placeholder="Motif" ng-model="user.motif">
+            </label>
+
+        </div>
+        <pre>form = {{user | json}}</pre>
+         <button class="button button-block button-positive" ng-click="vm.login(user)">
+            Valider
+        </button>
+
+        
+    </ion-content>
+</ion-view>

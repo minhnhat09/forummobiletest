@@ -1,31 +1,15 @@
-<ion-view title="Profile">
+<ion-view title="Profile" ng-controller="ContactCtrl as vm">
   <ion-content class="has-header">
-
-    <div class="list">
+    <a ui-sref="home.pageperso" class="button icon-left ion-chevron-left button-clear button-dark">Retour</a>
+    <div class="list" ng-repeat="contact in vm.contacts">
         
         <a class="item item-avatar item-icon-right" href="#">
           <img src="http://ionicframework.com/img/docs/mcfly.jpg">
-          <h2>NGUYEN Nhat Minh</h2>
-          <p>nhat-minh.nguyen@renault.com</p>
+           <h2>{{contact.contact.firstName}} {{contact.contact.lastName}}</h2>
+          <p>{{contact.contact.email}}</p> 
           <i class="icon ion-chevron-right icon-accessory"></i>
         </a>
-        
-        <a class="item item-avatar item-icon-right" href="#">
-          <img src="http://ionicframework.com/img/docs/mcfly.jpg">
-          <h2>NGUYEN Nhat Minh</h2>
-          <p>nhat-minh.nguyen@renault.com</p>
-          <i class="icon ion-chevron-right icon-accessory"></i>
-        </a>
-        
-        <a class="item item-avatar item-icon-right" href="#">
-          <img src="http://ionicframework.com/img/docs/mcfly.jpg">
-          <h2>NGUYEN Nhat Minh</h2>
-          <p>nhat-minh.nguyen@renault.com</p>
-          <i class="icon ion-chevron-right icon-accessory"></i>
-        </a>
-        
-        
-        
+          
     </div>
   </ion-content>
 </ion-view>

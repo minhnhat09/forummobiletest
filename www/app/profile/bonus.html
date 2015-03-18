@@ -1,13 +1,13 @@
-<ion-view title="Bonus">
+<ion-view title="Bonus" ng-controller="ProfileCtrl as vm">
   <ion-nav-back-button class="button-clear icon ion-ios7-arrow-back"></ion-nav-back-button>
   <ion-content class="has-header">
     <ion-nav-back-button class="button-clear icon ion-ios7-arrow-back"></ion-nav-back-button>
-
+    <a ui-sref="home.pageperso" class="button icon-left ion-chevron-left button-clear button-dark">Retour</a>
     <div class="list">
         <a class="item item-icon-left" href="#">
     <i class="icon ion-happy"></i>
     Points d'expérience
-    <span class="badge badge-assertive">123</span>
+    <span class="badge badge-assertive">{{vm.user.exp}}</span>
   </a>
     </div>
     <ion-nav-back-button class="button-clear icon ion-ios7-arrow-back"></ion-nav-back-button>
@@ -15,7 +15,7 @@
         <a class="item item-icon-left" href="#">
     <i class="icon ion-ios7-people-outline"></i>
     Titre
-    <span class="badge badge-assertive">Villageois</span>
+    <span class="badge badge-assertive">{{vm.user.title}}</span>
   </a>
     </div>
 
@@ -23,7 +23,7 @@
         <a class="item item-icon-left" href="#">
     <i class="icon ion-social-usd-outline"></i>
     Bonus
-    <span class="badge badge-assertive">3223</span>
+    <span class="badge badge-assertive">{{vm.user.bonus}}</span>
   </a>
     </div>
 

@@ -31,6 +31,13 @@ angular.module("eliteApp", ["ionic"])
       }
     )
 
+    .state('demand-code', {
+      url: "/demand-code",
+      templateUrl: "app/login/demand-code.html"  
+        
+      }
+    )
+
 
     .state('home.leagues', {
       url: "/leagues",
@@ -59,14 +66,16 @@ angular.module("eliteApp", ["ionic"])
       }
     })
 
-    .state('home.messages', {
-      url: "/messages",
+    .state('home.notis', {
+      url: "/notis",
       views: {
-        "tab-messages": {
-          templateUrl: "app/home/messages.html"
+        "tab-notis": {
+          templateUrl: "app/home/notis.html"
         }
       }
     })
+
+    
 
     
 
@@ -124,15 +133,33 @@ angular.module("eliteApp", ["ionic"])
     })
 
 
-    
+    .state('app.messages', {
+      url: "/notification/messages",
+      views: {
+        'mainContent': {
+          templateUrl: "app/notification/messages.html"
+        }
+      }
+    })
 
+    .state('app.reminders', {
+      url: "/notification/reminders",
+      views: {
+        'mainContent': {
+          templateUrl: "app/notification/reminders.html"
+        }
+      }
+    })
     .state('app.password', {
       url: "/profile/password",
+
       views: {
         'mainContent': {
           templateUrl: "app/profile/password.html"
         }
       }
+
+
     })
 
 

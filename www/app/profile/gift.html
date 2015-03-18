@@ -1,12 +1,14 @@
-<ion-view title="Cadeau">
+<ion-view title="Cadeau" ng-controller="GiftCtrl as vm">
+  <!-- Return to profile main page -->
   <ion-content class="has-header">
-
-    <div class="list">
+  	<a ui-sref="home.pageperso" class="button icon-left ion-chevron-left button-clear button-dark">Retour</a>
+    
+    <div class="list" ng-repeat="gift in vm.gifts">
         
-        <a class="item item-thumbnail-left" href="#">
+        <a class="item item-thumbnail-left">
           <img src="http://ionicframework.com/img/docs/mcfly.jpg">
-          <h2>Télévision</h2>
-          <p>300</p>
+          <h2>{{gift.name}}</h2>
+          <p>{{gift.bonus}}</p>
         </a>
         
         

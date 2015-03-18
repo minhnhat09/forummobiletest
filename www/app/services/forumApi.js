@@ -103,33 +103,7 @@
             return deferred.promise;
 		}
 
-		function commentThread(comment){
-
-			comment.currentThreadId = currentThreadId;
-			console.log(comment);
-			var deferred = $q.defer();
-			$ionicLoading.show({template: "Loading..."});
-			$http({
-                method: 'POST',
-                url: 'http://localhost:9000/forum/api/thread/commentThread',
-                data: comment,
-                headers: {'Content-Type': 'application/json'}
-            }).success(function (data, status, headers, config) {
-
-                console.log(data);
-                $ionicLoading.hide();
-				deferred.resolve(data);
-            }).error(function (data, status, headers, config) {
-                    console.log("error");
-                    $ionicPopup.alert({
-					     title: 'Erreur',
-					     template: 'Nom d\'utilisateur ou mot de passe est incorrect'
-					   });
-                    $ionicLoading.hide();
-					deferred.reject();
-                });
-            return deferred.promise;
-		}
+		
 
 
 		function setThreadId(ThreadId){

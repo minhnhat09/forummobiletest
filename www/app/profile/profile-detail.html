@@ -18,7 +18,8 @@
  
         <a class="item">
     		Civilité
-    	<span class="badge">{{vm.user.civilite}}</span>
+    	<span class="badge" ng-show="!vm.user.civilite">Homme</span>
+      <span class="badge" ng-show="vm.user.civilite">Femme</span>
   		</a>
  
         <a class="item">
