@@ -3,6 +3,8 @@
 	angular.module('eliteApp').factory('notisApi', ['$http', '$q', '$ionicLoading', notisApi]);
 
 	function notisApi ($http, $q, $ionicLoading) {
+		
+
 		function getMessagesByCurrentUser(){
 			var deferred = $q.defer();
 			$ionicLoading.show({template: "Loading..."});

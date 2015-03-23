@@ -1,4 +1,5 @@
-<ion-view ng-controller="ForumDetailCtrl as vm">
+<ion-view  ng-controller="ForumDetailCtrl as vm" title="{{vm.forum.appName}}">
+
   <ion-content>
 
     <div class="item item-input-inset">
@@ -25,8 +26,11 @@
 
     <div class="button-bar">
       <a class="button button-positive">Nouveau Topic</a>
-      <a class="button button-balanced">Présentation</a>
-      <a class="button button-calm">Communication</a>
+
+      <a class="button button-balanced" ng-click="openModal()">Présentation</a>
+
+      
+
     </div>
 <br>
     <div class="list">
@@ -55,6 +59,19 @@
             <i class="icon ion-chevron-right icon-accessory"></i>
         </a>
     </div>
+
+    <script id="presentation.html" type="text/ng-template">
+      <div class="modal">
+        <ion-header-bar>
+          
+          <h1 class="title">Présentation</h1><button class="button button-clear button-primary" ng-click="modal.hide()">Annuler</button>
+        </ion-header-bar>
+        <ion-content ng-click="closeModal()">
+          {{vm.forum.appDescription}}
+        </ion-content>
+      </div>
+    </script>
+
 
 
   </ion-content>

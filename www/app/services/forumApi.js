@@ -23,10 +23,10 @@
 			return deferred.promise;
 		}
 
-		function getForumById(){
+		function getThreadsByForumId(){
 			var deferred = $q.defer();
 			$ionicLoading.show({template: "Loading..."});
-			$http.get("http://localhost:9000/forum/api/forum/" + currentForumId)
+			$http.get("http://localhost:9000/forum/api/forum/getThreads/f=" + currentForumId)
 			.success(function(data, status){
 				console.log("Received list threads ok", data, status);
 				$ionicLoading.hide();
@@ -39,6 +39,26 @@
 			});
 			return deferred.promise;
 		}
+
+		function getForumById(){
+			var deferred = $q.defer();
+			$ionicLoading.show({template: "Loading..."});
+			$http.get("http://localhost:9000/forum/api/forum/getForum/f=" + currentForumId)
+			.success(function(data, status){
+				console.log("Received forum info ok", data, status);
+				$ionicLoading.hide();
+				deferred.resolve(data);
+			})
+			.error(function(){
+				console.log("Error while making http call for info forum");
+				$ionicLoading.hide();
+				deferred.reject();
+			});
+			return deferred.promise;
+		}
+
+
+
 
 		function setForumId(forumId){
 			currentForumId = forumId;
@@ -134,7 +154,8 @@
 			setThreadId: setThreadId,
 			setCurrentUser:setCurrentUser,
 			getCurrentUser:getCurrentUser,
-			currentThreadId:currentThreadId
+			currentThreadId:currentThreadId,
+			getThreadsByForumId:getThreadsByForumId
 		};
 	}
 

@@ -1,10 +1,9 @@
 (function () {
     'use strict';
-
     angular.module('eliteApp')
     .controller('MessagesCtrl', ['$state','$scope','$http', '$ionicModal', 'notisApi', MessagesCtrl]);
 
-    function MessagesCtrl($state, $scope,$http, $ionicModal,  notisApi) {
+    function MessagesCtrl($state, $scope, $http, $ionicModal, notisApi) {
 
     	var vm  = this;
 		notisApi.getMessagesByCurrentUser().then(function(data){
@@ -19,6 +18,8 @@
 		  }).then(function(modal) {
 		    $scope.modal = modal;
 		  });
+
+
 		  $scope.openModal = function() {
 		    $scope.modal.show();
 		  };
@@ -38,6 +39,6 @@
 		    // Execute action
 		 });
 
-
+		  
     };
 })();
