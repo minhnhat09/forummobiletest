@@ -1,19 +1,52 @@
 <ion-nav-bar class="bar-positive">
-    <h1 class="title">Commenter</h1>
+<h1 class="title">Créer l'article</h1>
 </ion-nav-bar>
 
 <ion-view ng-controller="CreateThreadCtrl as vm">
-    <ion-content class="has-header">
-        
-            <textarea placeholder="Saisissez votre commentaire" ng-model="comment.content">
-            </textarea>
-        
-        <pre>form = {{comment | json}}</pre>
-        <button class="button button-block button-positive" ng-click="vm.commentThread(comment)">
-            Valider
-        </button>
-        <a ui-sref="app.thread" class="button button-block button-assertive">
-            Annuler
-        </a>
-    </ion-content>
+<ion-content class="has-header">
+<form name="createThreadForm">
+    <div class="list">
+
+        <label class="item item-input item-select">
+            <div class="input-label">
+            Pays
+            </div>
+            <select required ng-model="threadContent.tagCountry">
+                <option ng-repeat="tag in vm.countryTags" value="{{tag.idTag}}" >{{tag.tagTitle}}</option>
+            </select>
+        </label>
+
+        <label class="item item-input item-select">
+            <div class="input-label">
+            Module
+            </div>
+            <select required  ng-model="threadContent.tagModule">
+                <option ng-repeat="tag in vm.moduleTags" value="{{tag.idTag}}">{{tag.tagTitle}}</option>
+            </select>
+        </label>   
+
+    </div>
+
+    <label class="item item-input item-stacked-label">
+        <span class="input-label">Titre</span>
+        <input type="text" placeholder="Titre" required ng-model="threadContent.title">
+    </label>
+
+    <span class="input-label">Contenu</span>
+
+    <textarea placeholder="Saisissez" ng-model="threadContent.content" required ng-minlength="10">
+    </textarea>
+
+    <pre>form = {{threadContent | json}}</pre>
+    <button class="button button-block button-positive" ng-click="vm.createThread(threadContent)" ng-disabled="createThreadForm.$invalid">
+        Valider
+    </button>
+
+
+    <a ui-sref="app.forum-detail" class="button button-block button-assertive">
+        Annuler
+    </a>
+</form>
+
+</ion-content>
 </ion-view>

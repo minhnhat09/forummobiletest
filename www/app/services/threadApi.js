@@ -30,10 +30,75 @@
 		}
 
 
+		function getCountryTags(){
+			var deferred = $q.defer();
+
+			$ionicLoading.show({template: "Loading..."});
+
+			$http.get('http://localhost:9000/forum/api/forum/getCountryTags')
+			.success(function(data){
+				deferred.resolve(data);
+				$ionicLoading.hide();
+			})
+			.error(function(){
+				console.log("error getting country");
+				$ionicLoading.hide();
+				deferred.reject();
+			});
+			return deferred.promise;
+		}
+
+
+		function getModuleTags(){
+			var deferred = $q.defer();
+
+			$ionicLoading.show({template: "Loading..."});
+
+			$http.get('http://localhost:9000/forum/api/forum/getModuleTags')
+			.success(function(data){
+				deferred.resolve(data);
+				$ionicLoading.hide();
+			})
+			.error(function(){
+				console.log("error getting module");
+				$ionicLoading.hide();
+				deferred.reject();
+			});
+			return deferred.promise;
+		}
+		
+		function createThread(threadContent){
+			var deferred = $q.defer();
+			$ionicLoading.show({template: "Loading..."});
+			$http({
+                method: 'POST',
+                url: 'http://localhost:9000/forum/api/thread/createThread',
+                data: threadContent,
+                headers: {'Content-Type': 'application/json'}
+            }).success(function (data, status, headers, config) {
+
+                
+                $ionicLoading.hide();
+				deferred.resolve(data);
+            }).error(function (data, status, headers, config) {
+                    console.log("error");
+                    $ionicPopup.alert({
+					     title: 'Erreur',
+					     template: 'Erreur lors de la création de l\'article'
+					   });
+                    $ionicLoading.hide();
+					deferred.reject();
+                });
+            return deferred.promise;
+		}
+
 		
 
 		return {
-			commentThread:commentThread
+			commentThread: commentThread,
+			getCountryTags: getCountryTags,
+			getModuleTags: getModuleTags,
+			createThread: createThread
 		};
 	}
 })();

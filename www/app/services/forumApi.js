@@ -57,13 +57,6 @@
 			return deferred.promise;
 		}
 
-
-
-
-		function setForumId(forumId){
-			currentForumId = forumId;
-		}
-
 		function getThreadById(){
 			var deferred = $q.defer();
 			$ionicLoading.show({template: "Loading..."});
@@ -134,6 +127,14 @@
 			return currentThreadId;
 		}
 
+		function getForumId(){
+			return currentForumId;
+		}
+
+		function setForumId(forumId){
+			currentForumId = forumId;
+		}
+
 		function setCurrentUser(user){
 			currentUser = user;
 		};
@@ -141,6 +142,7 @@
 		function getCurrentUser(){
 			return currentUser;
 		}
+
 
 
 		return {
@@ -155,7 +157,8 @@
 			setCurrentUser:setCurrentUser,
 			getCurrentUser:getCurrentUser,
 			currentThreadId:currentThreadId,
-			getThreadsByForumId:getThreadsByForumId
+			getThreadsByForumId:getThreadsByForumId,
+			getForumId: getForumId
 		};
 	}
 

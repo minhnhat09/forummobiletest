@@ -3,3 +3,11 @@
 body {
   cursor: url('http://ionicframework.com/img/finger.png'), auto;
 }
+
+input.ng-invalid.ng-dirty {
+    background-color: pink
+}
+
+textarea.ng-invalid.ng-dirty {
+    background-color: pink
+}

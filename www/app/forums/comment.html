@@ -4,10 +4,8 @@
 
 <ion-view ng-controller="CommentCtrl as vm">
     <ion-content class="has-header">
-        
-            <textarea placeholder="Saisissez votre commentaire" ng-model="comment.content">
-            </textarea>
-        
+        <textarea placeholder="Saisissez votre commentaire" ng-model="comment.content" required ng-minlength="10">
+        </textarea>
         <pre>form = {{comment | json}}</pre>
         <button class="button button-block button-positive" ng-click="vm.commentThread(comment)">
             Valider

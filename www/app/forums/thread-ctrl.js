@@ -24,8 +24,6 @@
             forumApi.setThreadId(id);
             console.log("Thread id in thread: " + id);
             $state.go("app.comment");
-            
-
         };
 
         

@@ -230,6 +230,15 @@ angular.module("eliteApp", ["ionic"])
         }
       }
     })
+    //create thread page
+    .state('app.create-thread', {
+      url: "/forums/thread/create-thread",
+      views: {
+        'mainContent': {
+          templateUrl: "app/forums/create-thread.html"
+        }
+      }
+    })
 
 
     .state('app.game', {

@@ -5,14 +5,26 @@
 
 	function CreateThreadCtrl ($scope, $http, $ionicLoading, $state, forumApi, threadApi) {
 		var vm = this;
-		console.log(forumApi.getThreadId());
+		console.log("Forum create thread " + forumApi.getForumId());
 		
-		vm.commentThread = function(comment){
-			comment["currentThreadId"] = forumApi.getThreadId();
-			console.log(comment);
+		threadApi.getCountryTags().then(
+			function(data){
+				vm.countryTags = data;
+			});
+
+		threadApi.getModuleTags().then(
+			function(data){
+				vm.moduleTags = data;
+			});
+
+		vm.createThread = function(threadContent){
 			
-			threadApi.commentThread(comment).then(function(data){
-				$state.go("app.thread");
+			threadContent["currentForumId"] = forumApi.getForumId();
+
+			console.log(threadContent);
+			
+			threadApi.createThread(threadContent).then(function(data){
+				$state.go("app.forum-detail");
 			});
 		} 
 	}

@@ -17,7 +17,12 @@
             
         });
 
+        vm.createThread = function(){
+          forumApi.setForumId(vm.forum.idApp);
 
+          console.log("day qua " + vm.forum.idApp);
+          $state.go("app.create-thread");
+        }
 
         vm.selectThread = function(id){
             console.log('id: ' + id);
