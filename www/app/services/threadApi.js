@@ -21,13 +21,118 @@
                     console.log("error");
                     $ionicPopup.alert({
 					     title: 'Erreur',
-					     template: 'Nom d\'utilisateur ou mot de passe est incorrect'
+					     template: 'Comment error'
 					   });
                     $ionicLoading.hide();
 					deferred.reject();
                 });
             return deferred.promise;
 		}
+
+		function likeThread(data){
+			var deferred = $q.defer();
+			$ionicLoading.show({template: "Loading..."});
+			$http({
+                method: 'POST',
+                url: 'http://localhost:9000/forum/api/thread/likeThread',
+                data: data,
+                headers: {'Content-Type': 'application/json'}
+            }).success(function (data, status, headers, config) {
+				deferred.resolve(data);
+                $ionicLoading.hide();
+            }).error(function (data, status, headers, config) {
+                    console.log("error");
+                    $ionicPopup.alert({
+					     title: 'Erreur',
+					     template: 'Comment error'
+					   });
+					deferred.reject();
+                    $ionicLoading.hide();
+                });
+            return deferred.promise;
+		}
+
+		function dislikeThread(data){
+			var deferred = $q.defer();
+			$ionicLoading.show({template: "Loading..."});
+			$http({
+                method: 'POST',
+                url: 'http://localhost:9000/forum/api/thread/dislikeThread',
+                data: data,
+                headers: {'Content-Type': 'application/json'}
+            }).success(function (data, status, headers, config) {
+
+                
+				deferred.resolve(data);
+                $ionicLoading.hide();
+            }).error(function (data, status, headers, config) {
+                    console.log("error");
+                    $ionicPopup.alert({
+					     title: 'Erreur',
+					     template: 'Comment error'
+					   });
+					deferred.reject();
+                    $ionicLoading.hide();
+                });
+            return deferred.promise;
+		}
+
+		function bookmarkThread(data){
+			var deferred = $q.defer();
+			$ionicLoading.show({template: "Loading..."});
+			$http({
+                method: 'POST',
+                url: 'http://localhost:9000/forum/api/thread/bookmarkThread',
+                data: data,
+                headers: {'Content-Type': 'application/json'}
+            }).success(function (data, status, headers, config) {
+
+                
+				deferred.resolve(data);
+                $ionicLoading.hide();
+            }).error(function (data, status, headers, config) {
+                    console.log("error");
+                    $ionicPopup.alert({
+					     title: 'Erreur',
+					     template: 'Comment error'
+					   });
+					deferred.reject();
+                    $ionicLoading.hide();
+                });
+            return deferred.promise;
+		}
+
+		function noteThread(data){
+			var deferred = $q.defer();
+			$ionicLoading.show({template: "Loading..."});
+			$http({
+                method: 'POST',
+                url: 'http://localhost:9000/forum/api/thread/noteThread',
+                data: data,
+                headers: {'Content-Type': 'application/json'}
+            }).success(function (data, status, headers, config) {
+
+                
+				deferred.resolve(data);
+                $ionicLoading.hide();
+            }).error(function (data, status, headers, config) {
+                    console.log("error");
+                    $ionicPopup.alert({
+					     title: 'Erreur',
+					     template: 'Comment error'
+					   });
+					deferred.reject();
+                    $ionicLoading.hide();
+                });
+            return deferred.promise;
+		}
+
+
+
+
+
+
+
 
 
 		function getCountryTags(){
@@ -98,7 +203,11 @@
 			commentThread: commentThread,
 			getCountryTags: getCountryTags,
 			getModuleTags: getModuleTags,
-			createThread: createThread
+			createThread: createThread,
+			likeThread: likeThread,
+			dislikeThread: dislikeThread,
+			bookmarkThread: bookmarkThread,
+			noteThread: noteThread
 		};
 	}
 })();

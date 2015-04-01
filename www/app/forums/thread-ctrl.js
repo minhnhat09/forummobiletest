@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('eliteApp')
-    .controller('ThreadCtrl', ['$state','$scope', '$ionicActionSheet', 'forumApi', ThreadCtrl]);
+    .controller('ThreadCtrl', ['$state','$scope', '$ionicActionSheet', 'forumApi', 'threadApi', ThreadCtrl]);
 
-    function ThreadCtrl($state, $scope, $ionicActionSheet, forumApi) {
+    function ThreadCtrl($state, $scope, $ionicActionSheet, forumApi, threadApi) {
         var vm = this;
 
         var data = forumApi.getThreadById().then(function(data){
@@ -12,40 +12,22 @@
           console.log(data);
         });
 
-        console.log("fsdq:" + data.idThread);
-        
-       
-
-        $scope.bookmark = function(){
-          console.log('bookmark');
-        };
-
         vm.commentThread = function(id){
             forumApi.setThreadId(id);
             console.log("Thread id in thread: " + id);
             $state.go("app.comment");
         };
 
-        
-        
-        $scope.createContact = function(u) {        
-          $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
-          $scope.modal.hide();
-        };
-
-
-        $scope.like = function(idThread){
+        vm.like = function(id){
+          console.log("idThread " + id);
+          var data = {};
+          data['currentThreadId'] = id;
           
-
+          threadApi.likeThread(data);
 
         };
 
-        $scope.dislike = function(){
-          console.log('dislike');
-        };
-
-
-        $scope.showShareForm = function() {
+        vm.showShareForm = function(id) {
           
           $ionicActionSheet.show({
             titleText: 'Share',
@@ -63,6 +45,7 @@
             },
             buttonClicked: function(index) {
               console.log('BUTTON CLICKED', index);
+
               return true;
             },
             destructiveButtonClicked: function() {
@@ -72,8 +55,41 @@
           });
         };
 
+        vm.createContact = function(u) {        
+          $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
+          $scope.modal.hide();
+        };
 
-      $scope.showNoteForm = function() {
+        
+       
+
+        vm.bookmark = function(id){
+          console.log('bookmark');
+          var data = {};
+          data['currentThreadId'] = id;
+          
+          threadApi.bookmarkThread(data);
+
+        };
+
+        
+
+
+        
+
+        vm.dislike = function(id){
+          console.log('dislike');
+          var data = {};
+          data['currentThreadId'] = id;
+          
+          threadApi.dislikeThread(data);
+        };
+
+
+        
+
+
+      vm.showNoteForm = function(id) {
         
         $ionicActionSheet.show({
           titleText: 'Noter',
@@ -92,6 +108,10 @@
           },
           buttonClicked: function(index) {
             console.log('BUTTON CLICKED', index);
+            var data = {};
+            data['currentThreadId'] = id;
+            data['note'] = index;
+            threadApi.noteThread(data);
             return true;
           },
           destructiveButtonClicked: function() {

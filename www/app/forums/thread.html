@@ -14,16 +14,16 @@
           </div>
 
           <div class="item tabs tabs-secondary tabs-icon-left">
-            <a class="tab-item" ng-click="like()">
+            <a class="tab-item" ng-click="vm.like(vm.thread.idThread)">
               <i class="icon ion-thumbsup"></i>
               Like
             </a>
-            <a class="tab-item" ng-click="dislike()">
+            <a class="tab-item" ng-click="vm.dislike(vm.thread.idThread)">
               <i class="icon ion-chatbox"></i>
               Dislike
             </a>
             
-            <a class="tab-item" ng-click="showShareForm()">
+            <a class="tab-item" ng-click="showShareForm(vm.thread.idThread)">
               <i class="icon ion-share"></i>
               Share
             </a>
@@ -34,11 +34,11 @@
               <i class="icon ion-thumbsup"></i>
               Comment
             </a>
-            <a class="tab-item"  ng-click="bookmark()">
+            <a class="tab-item"  ng-click="vm.bookmark(vm.thread.idThread)">
               <i class="icon ion-thumbsup"></i>
               Bookmark
             </a>
-            <a class="tab-item" ng-click="showNoteForm()">
+            <a class="tab-item" ng-click="vm.showNoteForm(vm.thread.idThread)">
               <i class="icon ion-chatbox"></i>
               Note
             </a>

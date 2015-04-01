@@ -131,6 +131,14 @@ angular.module("eliteApp", ["ionic"])
         }
       }
     })
+    .state('app.send-message', {
+      url: "/message/send-message",
+      views: {
+        'mainContent': {
+          templateUrl: "app/notification/send-message.html"
+        }
+      }
+    })
 
 
     .state('app.messages', {

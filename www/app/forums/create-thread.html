@@ -37,7 +37,7 @@
     <textarea placeholder="Saisissez" ng-model="threadContent.content" required ng-minlength="10">
     </textarea>
 
-    <pre>form = {{threadContent | json}}</pre>
+    <!-- <pre>form = {{threadContent | json}}</pre> -->
     <button class="button button-block button-positive" ng-click="vm.createThread(threadContent)" ng-disabled="createThreadForm.$invalid">
         Valider
     </button>

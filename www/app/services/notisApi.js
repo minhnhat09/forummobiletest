@@ -1,10 +1,8 @@
 (function(){
 	'use strict';
-	angular.module('eliteApp').factory('notisApi', ['$http', '$q', '$ionicLoading', notisApi]);
+	angular.module('eliteApp').factory('notisApi', ['$http', '$q', '$ionicLoading', '$ionicPopup', notisApi]);
 
-	function notisApi ($http, $q, $ionicLoading) {
-		
-
+	function notisApi ($http, $q, $ionicLoading, $ionicPopup) {
 		function getMessagesByCurrentUser(){
 			var deferred = $q.defer();
 			$ionicLoading.show({template: "Loading..."});
@@ -39,7 +37,31 @@
 			return deferred.promise;
 		}
 
+		function sendMessage(message){
+			var deferred = $q.defer();
+			$ionicLoading.show({template: "Loading..."});
+			$http({
+                method: 'POST',
+                url: 'http://localhost:9000/forum/api/user/notis/sendMessage',
+                data: message,
+                headers: {'Content-Type': 'application/json'}
+            }).success(function (data, status, headers, config) {
+				deferred.resolve(data);
+                $ionicLoading.hide();
+            }).error(function (data, status, headers, config) {
+                    console.log("error");
+                    $ionicPopup.alert({
+					     title: 'Erreur',
+					     template: 'Erreur'
+					   });
+					deferred.reject();
+                    $ionicLoading.hide();
+                });
+            return deferred.promise;
+		}
+
 		return{
+			sendMessage:sendMessage,
 			getMessagesByCurrentUser:getMessagesByCurrentUser,
 			getNotisByCurrentUser:getNotisByCurrentUser
 		};
