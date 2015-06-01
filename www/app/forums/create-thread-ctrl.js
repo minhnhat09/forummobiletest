@@ -8,6 +8,7 @@
 		console.log("Forum create thread " + forumApi.getForumId());
 		
 		threadApi.getCountryTags().then(
+			
 			function(data){
 				vm.countryTags = data;
 			});

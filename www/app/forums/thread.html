@@ -4,7 +4,11 @@
     	<div class="list card">
           
           <div class="item item-avatar">
-            <img src="http://ionicframework.com/img/docs/mcfly.jpg">
+            
+
+            <img ng-src="http://localhost:9000/assets/imgs/users/{{vm.thread.author.userName}}/avatar/{{vm.thread.author.avatar}}">
+
+            
             <h2>{{vm.thread.author.firstName}} {{vm.thread.author.lastName}}</h2>
             <p>{{vm.thread.author.title}}</p>
             <p>{{vm.thread.publicDate | date:"dd/MM/yyyy HH:mm:ss"}}</p>
@@ -47,7 +51,9 @@
         
     	<div class="list card" ng-repeat="post in vm.thread.posts">
           <div class="item item-avatar">
-            <img src="http://ionicframework.com/img/docs/mcfly.jpg">
+            <img ng-src="http://localhost:9000/assets/imgs/users/{{post.user.userName}}/avatar/{{post.user.avatar}}">
+
+
             <h2>{{post.user.firstName}} {{post.user.lastName}}</h2>
             <p>{{post.postTime | date:"dd/MM/yyyy"}}</p>
           </div>

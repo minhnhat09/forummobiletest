@@ -107,10 +107,10 @@
             console.log('CANCELLED');
           },
           buttonClicked: function(index) {
-            console.log('BUTTON CLICKED', index);
+            console.log('BUTTON CLICKED', index + 1);
             var data = {};
             data['currentThreadId'] = id;
-            data['note'] = index;
+            data['note'] = index + 1;
             threadApi.noteThread(data);
             return true;
           },

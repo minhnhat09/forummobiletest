@@ -3,9 +3,9 @@
     <a ui-sref="home.pageperso" class="button icon-left ion-chevron-left button-clear button-dark">Retour</a>
     <div class="list" ng-repeat="contact in vm.contacts">
         
-        <a class="item item-avatar item-icon-right" href="#">
+        <a class="item item-avatar item-icon-right">
           <img src="http://ionicframework.com/img/docs/mcfly.jpg">
-           <h2>{{contact.contact.firstName}} {{contact.contact.lastName}}</h2>
+          <h2>{{contact.contact.firstName}} {{contact.contact.lastName}}</h2>
           <p>{{contact.contact.email}}</p> 
           <i class="icon ion-chevron-right icon-accessory"></i>
         </a>

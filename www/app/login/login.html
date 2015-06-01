@@ -4,20 +4,23 @@
 
 <ion-view ng-controller="LoginCtrl as vm">
     <ion-content class="has-header">
-        <div class="list">
+        <form name="loginForm">
+            <div class="list">
 
             <label class="item item-input item-stacked-label">
                 <span class="input-label">Nom d'utilisateur</span>
-                <input type="text" placeholder="Nom d'utilisateur" ng-model="user.username">
+                <input type="text" placeholder="Nom d'utilisateur" ng-model="user.username" required>
             </label>
             <label class="item item-input item-stacked-label">
                 <span class="input-label">Mot de passe</span>
-                <input type="password" placeholder="Mot de passe" ng-model="user.password">
+                <input type="password" placeholder="Mot de passe" ng-model="user.password" required>
             </label>
         </div>
        <!--  <pre>form = {{user | json}}</pre> -->
-        <button class="button button-block button-positive" ng-click="vm.login(user)">
+        <button class="button button-block button-positive" ng-click="vm.login(user)" ng-disabled="loginForm.$invalid">
             Valider
         </button>
+        </form>
+        
     </ion-content>
 </ion-view>

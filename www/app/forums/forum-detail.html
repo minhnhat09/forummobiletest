@@ -3,7 +3,7 @@
   <ion-content>
 
     <div class="item item-input-inset">
-        <label style="margin-right: 5px;">
+        <!-- <label style="margin-right: 5px;">
             <select ng-model="mediaTypes.type">
                 <option value="all" selected>All Media</option>
                 <option value="musicVideo">Video</option>
@@ -12,16 +12,16 @@
                 <option value="podcast">Podcast</option>
                 <option value="tvShow">TV Show</option>
             </select>
-        </label>
+        </label> -->
 
         <label class="item-input-wrapper">
             <i class="icon ion-search placeholder-icon"></i>
-            <input type="text" placeholder="Search"/>
+            <input type="text" placeholder="Search" ng-model="searchText"/>
         </label>
 
-        <button class="button button-positive"  style="margin-left: 5px;" ng-click="search()">
+        <!-- <button class="button button-positive"  style="margin-left: 5px;" ng-click="search()">
         Go!
-        </button>
+        </button> -->
     </div>
 
     <div class="button-bar">
@@ -34,10 +34,10 @@
     </div>
 <br>
     <div class="list">
-        <a class="item item-icon-right"  ui-sref="app.thread" ng-repeat="thread in vm.threads" ng-click="vm.selectThread(thread.idThread)">
+        <a class="item item-icon-right"  ui-sref="app.thread" ng-repeat="thread in vm.threads| orderBy: '-publicDate'| filter:searchText" ng-click="vm.selectThread(thread.idThread)">
             <div class="row">
                 <div class="col-20">
-                    <p>12/11/2014</p>
+                    <p>{{thread.publicDate | date:"dd/MM/yyyy"}}</p>
 
                 </div>
 

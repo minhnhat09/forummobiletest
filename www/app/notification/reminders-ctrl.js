@@ -1,9 +1,9 @@
 (function(){
 	'use strict';
 	angular.module('eliteApp')
-	.controller('ReminderCtrl', ['$state', 'notisApi', ReminderCtrl]);
+	.controller('ReminderCtrl', ['$state', 'notisApi','forumApi', ReminderCtrl]);
 
-	function ReminderCtrl($state, notisApi){
+	function ReminderCtrl($state, notisApi, forumApi){
 		
 		var vm  = this;
 		notisApi.getNotisByCurrentUser().then(function(data){
@@ -11,6 +11,11 @@
 			console.log("Reminders " + data);
 		});
 
+		vm.selectThread = function(id){
+            console.log('id: ' + id);
+            forumApi.setThreadId(id);
+            $state.go("app.thread");
+        }
 		
 	}
 })();

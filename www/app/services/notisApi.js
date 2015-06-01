@@ -52,7 +52,7 @@
                     console.log("error");
                     $ionicPopup.alert({
 					     title: 'Erreur',
-					     template: 'Erreur'
+					     template: data
 					   });
 					deferred.reject();
                     $ionicLoading.hide();

@@ -4,19 +4,32 @@
     <a ui-sref="home.notis" class="button icon-left ion-chevron-left button-clear button-dark">Retour</a>
     <a ui-sref="app.send-message" class="button">Ecrire un message</a>
     <div class="list">
-        <a class="item item-avatar item-icon-right" ng-click="openModal()" ng-repeat="message in vm.messages">
-        <img src="http://ionicframework.com/img/docs/mcfly.jpg">
+        <a class="item item-avatar item-icon-right" ng-click="openModal({{message.idMessage}})" ng-repeat="message in vm.messages">
+
+
+        <img ng-src="http://localhost:9000/assets/imgs/users/{{message.userNameFrom.userName}}/avatar/{{message.userNameFrom.avatar}}">
+
+        
         <h2>{{message.userNameFrom.firstName}} {{message.userNameFrom.lastName}}</h2>
         <p>{{message.content}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>
+
+
         <script id="my-modal.html" type="text/ng-template">
           <div class="modal">
             <ion-header-bar>
-              <h1 class="title">Message</h1><button class="button button-clear button-primary" ng-click="modal.hide()">Fermer</button>
+              <h1 class="title">Message</h1>
+              
+               
+              <button class="button button-clear button-primary" ng-click="modal.hide()">Fermer</button>
             </ion-header-bar>
+            
+
             <ion-content ng-click="closeModal()">
-              {{message.content}}
+              <p>{{modal.content}}</p>
             </ion-content>
+
+
           </div>
         </script>
         </a>

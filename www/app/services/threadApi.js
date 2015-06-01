@@ -2,7 +2,7 @@
 	'use strict';
 	angular.module('eliteApp').factory('threadApi', ['$http', '$q', '$ionicLoading','$ionicPopup', threadApi]);
 	function threadApi($http, $q, $ionicLoading, $ionicPopup){
-		
+					
 
 		function commentThread(comment){
 			var deferred = $q.defer();
@@ -126,20 +126,11 @@
                 });
             return deferred.promise;
 		}
-
-
-
-
-
-
-
-
-
+		
 		function getCountryTags(){
 			var deferred = $q.defer();
-
 			$ionicLoading.show({template: "Loading..."});
-
+			
 			$http.get('http://localhost:9000/forum/api/forum/getCountryTags')
 			.success(function(data){
 				deferred.resolve(data);

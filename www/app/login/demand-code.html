@@ -2,40 +2,43 @@
     <h1 class="title">Demande code Parrainage</h1>
 </ion-nav-bar>
 
-<ion-view ng-controller="LoginCtrl as vm">
+<ion-view ng-controller="DemandCodeCtrl as vm">
     <ion-content class="has-header">
-        <div class="list">
+        <form name="demandCodeForm">
+            <div class="list">
 
             <label class="item item-input item-stacked-label">
                 <span class="input-label">Nom et prénom</span>
-                <input type="text" placeholder="Nom et prénom" ng-model="user.username">
+                <input type="text" placeholder="Nom et prénom" ng-model="user.username" required>
             </label>
 
             <label class="item item-input item-stacked-label">
                 <span class="input-label">IPN</span>
-                <input type="text" placeholder="IPN" ng-model="user.ipn">
+                <input type="text" placeholder="IPN" ng-model="user.ipn" required>
             </label>
 
             <label class="item item-input item-stacked-label">
                 <span class="input-label">Service incrit</span>
-                <input type="text" placeholder="Service inscrit" ng-model="user.service">
+                <input type="text" placeholder="Service inscrit" ng-model="user.service" required>
             </label>
 
             <label class="item item-input item-stacked-label">
                 <span class="input-label">Email</span>
-                <input type="text" placeholder="Email" ng-model="user.email">
+                <input type="email" placeholder="Email" ng-model="user.email" required>
             </label>
 
             <label class="item item-input item-stacked-label">
                 <span class="input-label">Motif</span>
-                <input type="text" placeholder="Motif" ng-model="user.motif">
+                <input type="text" placeholder="Motif" ng-model="user.motif" required>
             </label>
 
-        </div>
-        <pre>form = {{user | json}}</pre>
-         <button class="button button-block button-positive" ng-click="vm.login(user)">
-            Valider
-        </button>
+            </div>
+            <pre>form = {{user | json}}</pre>
+             <button class="button button-block button-positive" ng-click="vm.demandCode(user)" ng-disabled="demandCodeForm.$invalid">
+                Valider
+            </button>
+        </form>
+        
 
         
     </ion-content>
