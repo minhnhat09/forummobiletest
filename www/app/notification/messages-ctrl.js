@@ -8,8 +8,6 @@
     	var vm  = this;
 		notisApi.getMessagesByCurrentUser().then(function(data){
 			vm.messages = data;
-			
-			
 			console.log("messages " + data);
 		});
 

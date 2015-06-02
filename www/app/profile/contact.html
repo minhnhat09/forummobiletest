@@ -4,7 +4,7 @@
     <div class="list" ng-repeat="contact in vm.contacts">
         
         <a class="item item-avatar item-icon-right">
-          <img src="http://ionicframework.com/img/docs/mcfly.jpg">
+          <img ng-src="http://localhost:9000/assets/imgs/users/{{contact.contact.userName}}/avatar/{{contact.contact.avatar}}">
           <h2>{{contact.contact.firstName}} {{contact.contact.lastName}}</h2>
           <p>{{contact.contact.email}}</p> 
           <i class="icon ion-chevron-right icon-accessory"></i>

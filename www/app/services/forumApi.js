@@ -60,6 +60,8 @@
 		function getThreadById(){
 			var deferred = $q.defer();
 			$ionicLoading.show({template: "Loading..."});
+			console.log("in forumApi, threadid is: " + currentThreadId);
+
 			$http.get("http://localhost:9000/forum/api/forum/thread/"+ currentThreadId)
 			.success(function(data, status){
 				console.log("Received list posts ok", data, status);

@@ -2,13 +2,16 @@
     'use strict';
 
     angular.module('eliteApp')
-    .controller('ThreadCtrl', ['$state','$scope', '$ionicActionSheet', 'forumApi', 'threadApi', ThreadCtrl]);
+    .controller('ThreadCtrl', ['$state','$scope', '$ionicActionSheet', '$sce', 'forumApi', 'threadApi', ThreadCtrl]);
 
-    function ThreadCtrl($state, $scope, $ionicActionSheet, forumApi, threadApi) {
+    function ThreadCtrl($state, $scope, $ionicActionSheet, $sce, forumApi, threadApi) {
         var vm = this;
 
         var data = forumApi.getThreadById().then(function(data){
           vm.thread = data;
+          for(var i=0; i < vm.thread.posts.length; i++){
+            vm.thread.posts[i].postContent = $sce.trustAsHtml(vm.thread.posts[i].postContent);
+          }
           console.log(data);
         });
 

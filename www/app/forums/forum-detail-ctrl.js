@@ -25,7 +25,7 @@
         }
 
         vm.selectThread = function(id){
-            console.log('id: ' + id);
+            console.log('id thread is: ' + id);
             forumApi.setThreadId(id);
             $state.go("app.thread");
         }

@@ -12,7 +12,7 @@
 		});
 
 		vm.selectThread = function(id){
-            console.log('id: ' + id);
+            console.log('idThread from Reminders: ' + id);
             forumApi.setThreadId(id);
             $state.go("app.thread");
         }

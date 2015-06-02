@@ -39,6 +39,7 @@
                 headers: {'Content-Type': 'application/json'}
             }).success(function (data, status, headers, config) {
 				deferred.resolve(data);
+				
                 $ionicLoading.hide();
             }).error(function (data, status, headers, config) {
                     console.log("error");
