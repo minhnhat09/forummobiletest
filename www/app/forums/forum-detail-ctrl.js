@@ -6,7 +6,7 @@
 
     function ForumDetailCtrl($state, $scope, $ionicModal, forumApi) {
         var vm = this;
-
+        console.log("forum id is: " + forumApi.getForumId());
         forumApi.getThreadsByForumId().then(function (data) {
             vm.threads = data;
             

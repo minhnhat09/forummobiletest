@@ -75,12 +75,6 @@ angular.module("eliteApp", ["ionic"])
       }
     })
 
-    
-
-    
-
-    
-
     .state('home.forums', {
       url: "/forums",
       views: {

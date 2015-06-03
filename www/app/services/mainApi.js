@@ -76,10 +76,12 @@
 				deferred.resolve(data);
 			}).error(function(data, status, headers, config){
 				console.log("error");
+
 				$ionicPopup.alert({
 					title:'Erreur',
 					template:'Problème de réseaux'
 				});
+				
 				$ionicLoading.hide();
 				deferred.reject();
 			});

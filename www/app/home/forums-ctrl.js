@@ -18,7 +18,7 @@
 
 		vm.selectForum = function(id){
 			forumApi.setForumId(id);
-			$state.go("app.forum-detail");
+			
 		}
 	}
 })();
