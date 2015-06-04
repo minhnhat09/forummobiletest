@@ -4,12 +4,12 @@
         <a class="item item-icon-left" ui-sref="app.messages">
             <i class="icon ion-email"></i>
             Messages
-            <span class="badge badge-assertive">7</span>
+            <span class="badge badge-assertive">{{vm.messages.length}}</span>
         </a>
         <a class="item item-icon-left" ui-sref="app.reminders">
             <i class="icon ion-person-stalker"></i>
             Notifications
-            <span class="badge badge-balanced">5</span>
+            <span class="badge badge-balanced">{{vm.notis.length}}</span>
         </a>
     </div>
   </ion-content>
