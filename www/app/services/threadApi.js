@@ -1,7 +1,7 @@
 (function(){
 	'use strict';
-	angular.module('eliteApp').factory('threadApi', ['$http', '$q', '$ionicLoading','$ionicPopup', threadApi]);
-	function threadApi($http, $q, $ionicLoading, $ionicPopup){
+	angular.module('eliteApp').factory('threadApi', ['$http', '$q', '$ionicLoading','$ionicPopup', 'appConfig', threadApi]);
+	function threadApi($http, $q, $ionicLoading, $ionicPopup, appConfig){
 					
 
 		function commentThread(comment){
@@ -9,7 +9,7 @@
 			$ionicLoading.show({template: "Loading..."});
 			$http({
                 method: 'POST',
-                url: 'http://localhost:9000/forum/api/thread/commentThread',
+                url: appConfig.url + '/thread/commentThread',
                 data: comment,
                 headers: {'Content-Type': 'application/json'}
             }).success(function (data, status, headers, config) {
@@ -34,7 +34,7 @@
 			$ionicLoading.show({template: "Loading..."});
 			$http({
                 method: 'POST',
-                url: 'http://localhost:9000/forum/api/thread/likeThread',
+                url: appConfig.url + '/thread/likeThread',
                 data: data,
                 headers: {'Content-Type': 'application/json'}
             }).success(function (data, status, headers, config) {
@@ -58,7 +58,7 @@
 			$ionicLoading.show({template: "Loading..."});
 			$http({
                 method: 'POST',
-                url: 'http://localhost:9000/forum/api/thread/dislikeThread',
+                url: appConfig.url + '/thread/dislikeThread',
                 data: data,
                 headers: {'Content-Type': 'application/json'}
             }).success(function (data, status, headers, config) {
@@ -83,7 +83,7 @@
 			$ionicLoading.show({template: "Loading..."});
 			$http({
                 method: 'POST',
-                url: 'http://localhost:9000/forum/api/thread/bookmarkThread',
+                url: appConfig.url + '/thread/bookmarkThread',
                 data: data,
                 headers: {'Content-Type': 'application/json'}
             }).success(function (data, status, headers, config) {
@@ -108,7 +108,7 @@
 			$ionicLoading.show({template: "Loading..."});
 			$http({
                 method: 'POST',
-                url: 'http://localhost:9000/forum/api/thread/noteThread',
+                url: appConfig.url + '/thread/noteThread',
                 data: data,
                 headers: {'Content-Type': 'application/json'}
             }).success(function (data, status, headers, config) {
@@ -132,7 +132,7 @@
 			var deferred = $q.defer();
 			$ionicLoading.show({template: "Loading..."});
 			
-			$http.get('http://localhost:9000/forum/api/forum/getCountryTags')
+			$http.get(appConfig.url + '/forum/getCountryTags')
 			.success(function(data){
 				deferred.resolve(data);
 				$ionicLoading.hide();
@@ -151,7 +151,7 @@
 
 			$ionicLoading.show({template: "Loading..."});
 
-			$http.get('http://localhost:9000/forum/api/forum/getModuleTags')
+			$http.get(appConfig.url + '/forum/getModuleTags')
 			.success(function(data){
 				deferred.resolve(data);
 				$ionicLoading.hide();
@@ -169,7 +169,7 @@
 			$ionicLoading.show({template: "Loading..."});
 			$http({
                 method: 'POST',
-                url: 'http://localhost:9000/forum/api/thread/createThread',
+                url: appConfig.url + '/thread/createThread',
                 data: threadContent,
                 headers: {'Content-Type': 'application/json'}
             }).success(function (data, status, headers, config) {

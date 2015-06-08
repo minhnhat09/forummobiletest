@@ -2,11 +2,11 @@
     'use strict';
 
     angular.module('eliteApp')
-    .controller('ThreadCtrl', ['$state','$scope', '$ionicActionSheet', '$sce', 'forumApi', 'threadApi', ThreadCtrl]);
+    .controller('ThreadCtrl', ['$state','$scope', '$ionicActionSheet', '$sce', 'forumApi', 'threadApi', 'appConfig', ThreadCtrl]);
 
-    function ThreadCtrl($state, $scope, $ionicActionSheet, $sce, forumApi, threadApi) {
+    function ThreadCtrl($state, $scope, $ionicActionSheet, $sce, forumApi, threadApi, appConfig) {
         var vm = this;
-
+        vm.apiHost = appConfig.apiHost;
         var data = forumApi.getThreadById().then(function(data){
           vm.thread = data;
           for(var i=0; i < vm.thread.posts.length; i++){

@@ -1,11 +1,14 @@
 (function () {
     'use strict';
     angular.module('eliteApp')
-    .controller('MessagesCtrl', ['$state','$scope','$http', '$ionicModal', 'notisApi','forumApi', MessagesCtrl]);
+    .controller('MessagesCtrl', ['$state','$scope','$http', '$ionicModal', 'notisApi','forumApi', 'appConfig', MessagesCtrl]);
 
-    function MessagesCtrl($state, $scope, $http, $ionicModal, notisApi, forumApi) {
+    function MessagesCtrl($state, $scope, $http, $ionicModal, notisApi, forumApi, appConfig) {
 
     	var vm  = this;
+
+    	vm.apiHost = appConfig.apiHost;
+    	
 		notisApi.getMessagesByCurrentUser().then(function(data){
 			vm.messages = data;
 			console.log("messages " + data);

@@ -1,4 +1,4 @@
-angular.module("eliteApp", ["ionic"])
+angular.module("eliteApp", ["ionic","ionic.utils"])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -31,6 +31,12 @@ angular.module("eliteApp", ["ionic"])
       }
     )
 
+	.state('logout', {
+      url: "/logout",
+      templateUrl: "app/login/logout.html"  
+        
+      }
+    )
     .state('demand-code', {
       url: "/demand-code",
       templateUrl: "app/login/demand-code.html"  

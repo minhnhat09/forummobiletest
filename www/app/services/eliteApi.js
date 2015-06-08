@@ -1,14 +1,14 @@
 (function () {
     'use strict';
 
-    angular.module('eliteApp').factory('eliteApi', ['$http', '$q', '$ionicLoading', '$timeout', eliteApi]);
+    angular.module('eliteApp').factory('eliteApi', ['$http', '$q', '$ionicLoading', '$timeout', 'appConfig', eliteApi]);
 
-    function eliteApi($http, $q, $ionicLoading, $timeout) {
+    function eliteApi($http, $q, $ionicLoading, $timeout, appConfig) {
         var currentLeagueId;
 
         function getThreads(){
             var deffered = $q.defer();
-            $http.get("http://localhost:9000/forum/api/findThreads")
+            $http.get(appConfig.url + "/findThreads")
                 .success(function (data) {
                     deffered.resolve(data);
                 })
