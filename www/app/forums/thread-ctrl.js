@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('eliteApp')
-    .controller('ThreadCtrl', ['$state','$scope', '$ionicPopup', '$sce', 'forumApi', 'threadApi', '$cordovaSocialSharing', 'appConfig', ThreadCtrl]);
+    .controller('ThreadCtrl', ['$state','$scope', '$ionicActionSheet', '$ionicPopup', '$sce', 'forumApi', 'threadApi', '$cordovaSocialSharing', 'appConfig', ThreadCtrl]);
 
-    function ThreadCtrl($state, $scope, $ionicPopup, $sce, forumApi, threadApi, $cordovaSocialSharing, appConfig) {
+    function ThreadCtrl($state, $scope, $ionicActionSheet, $ionicPopup, $sce, forumApi, threadApi, $cordovaSocialSharing, appConfig) {
         var vm = this;
         vm.apiHost = appConfig.apiHost;
         var data = forumApi.getThreadById().then(function(data){
