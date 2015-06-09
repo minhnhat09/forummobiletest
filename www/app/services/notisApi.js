@@ -1,14 +1,14 @@
 (function(){
 	'use strict';
-	angular.module('eliteApp').factory('notisApi', ['$http', '$q', '$ionicLoading', '$ionicPopup', notisApi]);
+	angular.module('eliteApp').factory('notisApi', ['$http', '$q', '$ionicLoading', '$ionicPopup', 'appConfig', notisApi]);
 
-	function notisApi ($http, $q, $ionicLoading, $ionicPopup) {
+	function notisApi ($http, $q, $ionicLoading, $ionicPopup, appConfig) {
 		
 
 		function getMessagesByCurrentUser(){
 			var deferred = $q.defer();
 			$ionicLoading.show({template: "Loading..."});
-			$http.get("http://localhost:9000/forum/api/user/messages/currentUser")
+			$http.get(appConfig.url + "/user/messages/currentUser")
 			.success(function(data, status){
 				console.log("Received list messages ok", data, status);
 				$ionicLoading.hide();
@@ -25,7 +25,7 @@
 		function getNotisByCurrentUser(){
 			var deferred = $q.defer();
 			$ionicLoading.show({template: "Loading..."});
-			$http.get("http://localhost:9000/forum/api/user/notis/currentUser")
+			$http.get(appConfig.url + "/user/notis/currentUser")
 			.success(function(data, status){
 				console.log("Received list notis ok", data, status);
 				$ionicLoading.hide();
@@ -44,7 +44,7 @@
 			$ionicLoading.show({template: "Loading..."});
 			$http({
                 method: 'POST',
-                url: 'http://localhost:9000/forum/api/user/notis/sendMessage',
+                url: appConfig.url + '/user/notis/sendMessage',
                 data: message,
                 headers: {'Content-Type': 'application/json'}
             }).success(function (data, status, headers, config) {

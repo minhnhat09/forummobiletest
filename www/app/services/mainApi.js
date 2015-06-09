@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
-	angular.module('eliteApp').factory('mainApi', ['$http', '$q', '$ionicLoading', '$ionicPopup', mainApi]);
+	angular.module('eliteApp').factory('mainApi', ['$http', '$q', '$ionicLoading', '$ionicPopup', 'appConfig', mainApi]);
 
-	function mainApi ($http, $q, $ionicLoading, $ionicPopup){
+	function mainApi ($http, $q, $ionicLoading, $ionicPopup, appConfig){
 		
 		function login(user){
 			var deferred = $q.defer();
@@ -10,7 +10,7 @@
 			$ionicLoading.show({template: "Loading..."});
 			$http({
                 method: 'POST',
-                url: 'http://localhost:9000/forum/api/authenticate',
+                url: appConfig.url + '/authenticate',
                 data: user,
                 headers: {'Content-Type': 'application/json'}
             }).success(function (data, status, headers, config) {
@@ -38,7 +38,7 @@
 			$ionicLoading.show({template:"Loading..."});
 			$http({
 				method: 'POST',
-				url: 'http://localhost:9000/forum/api/signUp',
+				url: appConfig.url + '/signUp',
 				data:user,
 				headers:{
 					'Content-Type': 'application/json'
@@ -65,7 +65,7 @@
 			$ionicLoading.show({template:"Loading..."});
 			$http({
 				method: 'POST',
-				url: 'http://localhost:9000/forum/api/demandCode',
+				url: appConfig.url + '/demandCode',
 				data:user,
 				headers:{
 					'Content-Type': 'application/json'

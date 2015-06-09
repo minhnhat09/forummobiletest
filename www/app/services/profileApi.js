@@ -1,13 +1,13 @@
 (function(){
 	'use strict';
-	angular.module('eliteApp').factory('profileApi', ['$http', '$q', '$ionicLoading', '$ionicPopup', profileApi]);
+	angular.module('eliteApp').factory('profileApi', ['$http', '$q', '$ionicLoading', '$ionicPopup', 'appConfig', profileApi]);
 
-	function profileApi($http, $q, $ionicLoading, $ionicPopup){
+	function profileApi($http, $q, $ionicLoading, $ionicPopup, appConfig){
 		
 		function getGiftsByCurrentUser(){
 			var deferred = $q.defer();
 			$ionicLoading.show({template: "Loading..."});
-			$http.get("http://localhost:9000/forum/api/user/gifts/currentUser")
+			$http.get(appConfig.url + "/user/gifts/currentUser")
 			.success(function(data, status){
 				console.log("Received list gifts ok", data, status);
 				$ionicLoading.hide();
@@ -27,7 +27,7 @@
 			$ionicLoading.show({template: "Loading..."});
 			$http({
 				method: 'POST',
-				url: 'http://localhost:9000/forum/api/profile/changePassword',
+				url: appConfig.url + '/profile/changePassword',
 				data: password,
 				header:{
 					'Content-Type': 'application/json'
@@ -56,7 +56,7 @@
 		function getContactsByCurrentUser(){
 			var deferred = $q.defer();
 			$ionicLoading.show({template: "Loading..."});
-			$http.get("http://localhost:9000/forum/api/user/contacts/currentUser")
+			$http.get(appConfig.url + "/user/contacts/currentUser")
 			.success(function(data, status){
 				console.log("Received list contacts ok", data, status);
 				$ionicLoading.hide();
@@ -73,7 +73,7 @@
 		function getBookmarksByCurrentUser(){
 			var deferred = $q.defer();
 			$ionicLoading.show({template: "Loading..."});
-			$http.get("http://localhost:9000/forum/api/user/bookmarks/currentUser")
+			$http.get(appConfig.url + "/user/bookmarks/currentUser")
 			.success(function(data, status){
 				console.log("Received list bookmarks ok", data, status);
 				$ionicLoading.hide();
