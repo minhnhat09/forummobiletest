@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('eliteApp')
-    .controller('ThreadCtrl', ['$state','$scope', '$ionicActionSheet', '$sce', 'forumApi', 'threadApi', 'appConfig', ThreadCtrl]);
+    .controller('ThreadCtrl', ['$state','$scope', '$ionicActionSheet', '$ionicPopup', '$sce', 'forumApi', 'threadApi', '$cordovaSocialSharing', 'appConfig', ThreadCtrl]);
 
-    function ThreadCtrl($state, $scope, $ionicActionSheet, $sce, forumApi, threadApi, appConfig) {
+    function ThreadCtrl($state, $scope, $ionicActionSheet, $ionicPopup, $sce, forumApi, threadApi, $cordovaSocialSharing, appConfig) {
         var vm = this;
         vm.apiHost = appConfig.apiHost;
         var data = forumApi.getThreadById().then(function(data){
@@ -32,30 +32,18 @@
 
         vm.showShareForm = function(id) {
           
-          $ionicActionSheet.show({
-            titleText: 'Share',
-            buttons: [
-              { text: 'Facebook <i class="icon ion-social-facebook-outline"></i>' },
-              { text: 'Linkedin <i class="icon ion-social-linkedin-outline"></i>' },
-              { text: 'Google <i class="icon ion-social-googleplus-outline"></i>' },
-              { text: 'Twitter <i class="icon ion-social-twitter-outline"></i>' },
-              { text: 'Mail <i class="icon ion-ios7-email-outline"></i>' },
-            ],
-            //destructiveText: 'Delete',
-            cancelText: 'Cancel',
-            cancel: function() {
-              console.log('CANCELLED');
-            },
-            buttonClicked: function(index) {
-              console.log('BUTTON CLICKED', index);
-
-              return true;
-            },
-            destructiveButtonClicked: function() {
-              console.log('DESTRUCT');
-              return true;
-            }
+          $cordovaSocialSharing.share(vm.thread.content, vm.thread.threadName, null, null) // Share via native share sheet
+          .then(function(result) {
+            // Success!
+            console.log("idThread " + id);
+          }, function(err) {
+            // An error occured. Show a message to the user
+            $ionicPopup.alert({
+              title: 'Erreur',
+              template: 'Une erreur est survenue...'
+            });
           });
+
         };
 
         vm.createContact = function(u) {        
